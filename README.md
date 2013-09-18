@@ -6,7 +6,7 @@ Web Component wrapper for generating QR Codes, using [qrjs](http://hg.mearie.org
 
 ## Demo
 
-> [Check it live](http://educastellano.github.io/qr-reader).
+> [Check it live](http://educastellano.github.io/qr-code).
 
 ## Usage
 
