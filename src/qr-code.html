@@ -1,0 +1,55 @@
+<polymer-element name="qr-code"
+		 attributes="data format">
+
+    <!-- qrjs lib: http://hg.mearie.org/qrjs/ -->
+    <script src="qr.js"></script>
+    <!-- qr-code element -->
+	<script>
+		Polymer('qr-code', {
+
+            format: 'png',
+
+            dataChanged: function () {
+                this.generate();
+            },
+
+            generate: function () {
+                if (this.format === 'png') {
+                    this.generatePNG();
+                }
+                else {
+                    this.generateHTML()
+                }
+            },
+
+            generatePNG: function () {
+                var img;
+                try {
+                    img = document.createElement('img');
+                    img.src = QRCode.generatePNG(this.data);
+                    this.clear();
+                    this.appendChild(img);
+                }
+                catch (e) {
+                    console.log('no canvas support');
+                }
+            },
+
+            generateHTML: function () {
+                var div = QRCode.generateHTML(this.data);
+                this.clear();
+                this.appendChild(div);
+            },
+
+            clear: function () {
+                var i;
+                for (i=0; i<this.children.length; i++) {
+                    this.children[i].parentNode.removeChild(this.children[i]);
+                }
+            }
+
+		});
+
+    </script>
+
+</polymer-element>
