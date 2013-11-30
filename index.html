@@ -7,6 +7,7 @@
 	<!-- Importing Web Component's Polyfill -->
 	<!--<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.0.20130905/polymer.min.js"></script>-->
     <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.0.20130711/polymer.min.js"></script>
+	<script src="src/qr.js"></script>
 
 	<!-- Importing Custom Elements -->
 	<link rel="import" href="src/qr-code.html">
@@ -14,7 +15,7 @@
 <body>
 
 	<!-- Using Custom Elements -->
-	<qr-code data="Try this in the console: $('qr-code').data = 'whatever you want'"></qr-code>
+	<qr-code data="You can change its value dynamically: $('qr-code').data = 'whatever you want'"></qr-code>
 
 </body>
 </html>

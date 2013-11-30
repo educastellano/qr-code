@@ -22,7 +22,13 @@ Web Component wrapper for generating QR Codes, using [qrjs](http://hg.mearie.org
 	<link rel="import" href="src/qr-code.html">
 	```
 
-3. Start using it!
+3. Import [qrjs](http://hg.mearie.org/qrjs/) lib:
+
+	```html
+	<script src="src/qr.js"></script>
+	```
+
+4. Start using it!
 
 	```html
 	<qr-code data="hello world!"></qr-code>
