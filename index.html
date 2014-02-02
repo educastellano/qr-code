@@ -11,11 +11,31 @@
 
 	<!-- Importing Custom Elements -->
 	<link rel="import" href="src/qr-code.html">
+	<style>
+		.content {
+			padding: 50px;
+			margin-left: 200px;
+		}
+
+		input {
+			font-size: 1.2em;
+			width: 300px
+		}
+	</style>
 </head>
 <body>
 
-	<!-- Using Custom Elements -->
-	<qr-code data="You can change its value dynamically: $('qr-code').data = 'whatever you want'"></qr-code>
+	<div class="content">
+		<input type="text"
+			value="bla bla blaaaaaaaaaahhh"
+			oninput="document.querySelector('qr-code').data = this.value"
+			autofocus
+		/>
+		<br><br>
+		<!-- Using Custom Elements -->
+		<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+	</div>
+
 
 </body>
 </html>
