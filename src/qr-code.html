@@ -1,5 +1,5 @@
 <polymer-element name="qr-code"
-		 attributes="data format">
+        attributes="data format size margin">
 
 	<script>
 		Polymer('qr-code', {
@@ -8,6 +8,21 @@
 
             dataChanged: function () {
                 this.generate();
+            },
+
+            getOptions: function () {
+                var margin = this.margin;
+
+                if (margin === 0) {
+                    // Passing 0 causes qr.js to use the default margin of 4,
+                    // so we need to pass a value of -1 to explicitly disable margins.
+                    margin = -1;
+                }
+
+                return {
+                    modulesize: this.size,
+                    margin: margin
+                };
             },
 
             generate: function () {
@@ -23,7 +38,7 @@
                 var img;
                 try {
                     img = document.createElement('img');
-                    img.src = QRCode.generatePNG(this.data);
+                    img.src = QRCode.generatePNG(this.data, this.getOptions());
                     this.clear();
                     this.appendChild(img);
                 }
@@ -33,7 +48,7 @@
             },
 
             generateHTML: function () {
-                var div = QRCode.generateHTML(this.data);
+                var div = QRCode.generateHTML(this.data, this.getOptions());
                 this.clear();
                 this.appendChild(div);
             },
