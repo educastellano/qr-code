@@ -36,10 +36,12 @@ Web Component wrapper for generating QR Codes, using [qrjs](http://hg.mearie.org
 
 ## Options
 
-Attribute  | Options                   | Default             | Description
----        | ---                       | ---                 | ---
-`data`     | *string*                  | `undefined`         | The information encoded by the QR code
-`format`   | `png`, `html`      	   | `png`               | Format of the QR code rendered inside the component.
+Attribute		| Options                   | Default             | Description
+---				| ---                       | ---                 | ---
+`data`			| *string*                  | `undefined`         | The information encoded by the QR code.
+`format`		| `png`, `html`				| `png`               | Format of the QR code rendered inside the component.
+`modulesize`	| *int*						| `5`				  | Size of the modules in *pixels*.
+`margin`		| *int*						| `4`				  | Margin of the QR code in *modules*.
 
 
 ## Contributing
