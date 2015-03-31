@@ -52,10 +52,12 @@ var proto = Object.create(HTMLElement.prototype, {
     //
     generate: {
         value: function () {
-            var options = {
-                modulesize: this.getAttribute('modulesize'),
-                margin: this.getAttribute('margin') === 0 ? -1 : this.getAttribute('margin')
-            };
+            var modulesize = this.getAttribute('modulesize'),
+                margin = this.getAttribute('margin'),
+                options = {
+                    modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
+                    margin: margin !== null ? parseInt(margin) || -1 : margin
+                };
             if (this.getAttribute('format') === 'png') {
                 this.generatePNG(options);
             }
