@@ -2,7 +2,7 @@
 
 Web Component wrapper for generating QR Codes, using [qr.js](https://github.com/lifthrasiir/qr.js) lib.
 
-> Maintained by [Eduard C.](https://github.com/educastellano).
+> Maintained by [Eduard Castellano](https://github.com/educastellano).
 
 ## Demo
 
@@ -63,6 +63,8 @@ Attribute		| Options                   | Default             | Description
 
 ## History
 
+* v0.1.1 March 31, 2015
+	* Framework-agnostic webcomponent (no use of Polymer), and available in Bower.
 * v0.0.1 September 18, 2013
 	* Started project using [boilerplate-element](https://github.com/customelements/boilerplate-element)
 
