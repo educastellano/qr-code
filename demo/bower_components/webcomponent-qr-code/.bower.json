@@ -1,0 +1,38 @@
+{
+  "name": "qr-code",
+  "version": "0.1.1",
+  "homepage": "https://github.com/educastellano/qr-code",
+  "authors": [
+    "Eduard Castellano <educastellano08@gmail.com>"
+  ],
+  "description": "Web Component for generating QR codes",
+  "main": "src/qr-code.js",
+  "keywords": [
+    "qr",
+    "qrcode",
+    "qr-code",
+    "webcomponent",
+    "customelement"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "webcomponentsjs": "~0.6.0"
+  },
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "7135b7aa1151927b336b0b0972f7280da58bcd95"
+  },
+  "_source": "git://github.com/educastellano/qr-code.git",
+  "_target": "~0.1.1",
+  "_originalSource": "webcomponent-qr-code",
+  "_direct": true
+}

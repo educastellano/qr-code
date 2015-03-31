@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>&lt;qr-code&gt;</title>
+
+	<!-- Importing Web Component's Polyfill -->
+    <script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.5.2/polymer.js"></script>
+	<script src="src/qr.js"></script>
+
+	<!-- Importing Custom Elements -->
+	<link rel="import" href="src/qr-code.html">
+	<style>
+		.content {
+			padding: 50px;
+			margin-left: 200px;
+		}
+
+		input {
+			font-size: 1.2em;
+			width: 300px
+		}
+	</style>
+</head>
+<body>
+
+	<div class="content">
+		<input type="text"
+			value="bla bla blaaaaaaaaaahhh"
+			oninput="document.querySelector('qr-code').data = this.value"
+			autofocus
+		/>
+		<br><br>
+		<!-- Using Custom Elements -->
+		<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+	</div>
+
+
+</body>
+</html>

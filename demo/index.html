@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="UTF-8">
+	<title>&lt;qr-code&gt;</title>
+	<style>
+		.content {
+			padding: 50px;
+			margin-left: 200px;
+		}
+
+		input {
+			font-size: 1.2em;
+			width: 300px
+		}
+	</style>
+</head>
+<body>
+
+	<div class="content">
+		<input type="text"
+			value="bla bla blaaaaaaaaaahhh"
+			oninput="document.querySelector('qr-code').data = this.value"
+			autofocus
+		/>
+		<br><br>
+		<!-- Using the Web Component -->
+		<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+	</div>
+
+	<!-- Polyfill -->
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<!-- Webcomponent and dependencies -->
+	<script src="bower_components/webcomponent-qr-code/src/qr.js"></script>
+	<script src="bower_components/webcomponent-qr-code/src/qr-code.js"></script>
+
+</body>
+</html>
