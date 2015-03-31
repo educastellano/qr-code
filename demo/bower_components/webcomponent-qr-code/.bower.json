@@ -1,6 +1,6 @@
 {
   "name": "qr-code",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/educastellano/qr-code",
   "authors": [
     "Eduard Castellano <educastellano08@gmail.com>"
@@ -25,14 +25,13 @@
   "dependencies": {
     "webcomponentsjs": "~0.6.0"
   },
-  "_release": "0.1.1",
+  "_release": "0.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.1",
-    "commit": "7135b7aa1151927b336b0b0972f7280da58bcd95"
+    "tag": "v0.1.2",
+    "commit": "0eade17fa16fa46bc7027c4124d7693270732bc2"
   },
   "_source": "git://github.com/educastellano/qr-code.git",
   "_target": "~0.1.1",
-  "_originalSource": "webcomponent-qr-code",
-  "_direct": true
+  "_originalSource": "webcomponent-qr-code"
 }

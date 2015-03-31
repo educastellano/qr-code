@@ -1,34 +1,43 @@
 # &lt;qr-code&gt;
 
-Web Component wrapper for generating QR Codes, using [qrjs](http://hg.mearie.org/qrjs/) lib.
+Web Component wrapper for generating QR Codes, using [qr.js](https://github.com/lifthrasiir/qr.js) lib.
 
-> Maintained by [Eduard C.](https://github.com/educastellano).
+> Maintained by [Eduard Castellano](https://github.com/educastellano).
 
 ## Demo
 
-> [Check it live](http://educastellano.github.io/qr-code).
+> [Check it live](http://educastellano.github.io/qr-code/demo).
 
 ## Usage
 
-1. Import Web Components' polyfill:
+1. Install it:
+
+	```sh
+	bower install webcomponent-qr-code
+	```
+	
+2. Import Web Components' polyfill and [qr.js](https://github.com/lifthrasiir/qr.js) lib:
 
 	```html
-	<script src="//cdnjs.cloudflare.com/ajax/libs/polymer/0.0.20130905/polymer.min.js"></script>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	
+	<script src="bower_components/webcomponent-qr-code/src/qr.js"></script>
 	```
 
 2. Import Custom Element:
 
-	```html
-	<link rel="import" href="src/qr-code.html">
+	```html	
+	<script src="bower_components/webcomponent-qr-code/src/qr-code.js"></script>
 	```
 
-3. Import [qrjs](http://hg.mearie.org/qrjs/) lib:
+	or:
 
 	```html
-	<script src="src/qr.js"></script>
+	<link rel="import" href="bower_components/webcomponent-qr-code/src/qr-code.html">
 	```
 
-4. Start using it!
+
+3. Start using it!
 
 	```html
 	<qr-code data="hello world!"></qr-code>
@@ -54,6 +63,8 @@ Attribute		| Options                   | Default             | Description
 
 ## History
 
+* v0.1.1 March 31, 2015
+	* Framework-agnostic webcomponent (no use of Polymer), and available in Bower.
 * v0.0.1 September 18, 2013
 	* Started project using [boilerplate-element](https://github.com/customelements/boilerplate-element)
 
