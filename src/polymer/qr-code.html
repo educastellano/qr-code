@@ -1,0 +1,56 @@
+<polymer-element name="qr-code"
+        attributes="data format modulesize margin">
+
+	<script>
+		Polymer('qr-code', {
+
+            format: 'png',
+
+            dataChanged: function () {
+                this.generate();
+            },
+
+            generate: function () {
+                var options = {
+                    modulesize: this.modulesize,
+                    margin: this.margin === 0 ? -1 : this.margin
+                };
+                if (this.format === 'png') {
+                    this.generatePNG(options);
+                }
+                else {
+                    this.generateHTML(options);
+                }
+            },
+
+            generatePNG: function (options) {
+                var img;
+                try {
+                    img = document.createElement('img');
+                    img.src = QRCode.generatePNG(this.data, options);
+                    this.clear();
+                    this.appendChild(img);
+                }
+                catch (e) {
+                    console.log('no canvas support');
+                }
+            },
+
+            generateHTML: function (options) {
+                var div = QRCode.generateHTML(this.data, options);
+                this.clear();
+                this.appendChild(div);
+            },
+
+            clear: function () {
+                var i;
+                for (i=0; i<this.children.length; i++) {
+                    this.children[i].parentNode.removeChild(this.children[i]);
+                }
+            }
+
+		});
+
+    </script>
+
+</polymer-element>
