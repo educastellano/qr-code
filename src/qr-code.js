@@ -1,5 +1,18 @@
 'use strict';
 
+(function(definition) {
+	if (typeof define === 'function' && define.amd) {
+		define(['QRCode'], definition);
+	} else if (typeof module === 'object' && module.exports) {
+		var QRCode = require('./qr.js');
+		module.exports = definition(QRCode);
+	} else {
+		definition(window.QRCode);
+	}
+})(function(QRCode) {
+//
+// Prototype definition
+//
 var proto = Object.create(HTMLElement.prototype, {
 	attrs: {
 		value: ['data', 'format', 'modulesize', 'margin']
@@ -94,7 +107,12 @@ var proto = Object.create(HTMLElement.prototype, {
         }
     }
 });
-
+//
+// Registering
+//
 document.registerElement('qr-code', {
     prototype: proto
 });
+});
+
+
