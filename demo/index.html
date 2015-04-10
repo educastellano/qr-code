@@ -4,35 +4,77 @@
 	<meta charset="UTF-8">
 	<title>&lt;qr-code&gt;</title>
 	<style>
+		body {
+			background: #eeeeee;
+		}
 		.content {
 			padding: 50px;
 			margin-left: 200px;
 		}
-
-		input {
+		#data {
 			font-size: 1.2em;
 			width: 300px
+		}
+		.theshow {
+			float: left;
+		}
+		label {
+			display: inline-block;
+			width: 150px;
+			text-align: right;
 		}
 	</style>
 </head>
 <body>
-
 	<div class="content">
-		<input type="text"
-			value="bla bla blaaaaaaaaaahhh"
-			oninput="document.querySelector('qr-code').data = this.value"
-			autofocus
-		/>
-		<br><br>
-		<!-- Using the Web Component -->
-		<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+		<div class="theshow">
+			<input
+				id="data"
+				type="text"
+				value="bla bla blaaaaaaaaaahhh"
+				oninput="document.querySelector('qr-code').data = this.value"
+				autofocus
+			/>
+			<br><br>
+			<!-- Using the Web Component -->
+			<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+		</div>
+		<div class="options">
+			<label for="format">Format</label>
+			<select
+				id="format"
+				onchange="document.querySelector('qr-code').format = this.value">
+				<option value="png" selected>PNG</option>
+				<option value="html">HTML</option>
+			</select>
+			<br>
+			<label for="modulesize">Module size</label>
+			<input
+				id="modulesize"
+				type="number"
+				value="5"
+				oninput="document.querySelector('qr-code').modulesize = this.value"
+				min=1
+				max=30
+				onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+			/>
+			<br>
+			<label for="margin">Margin</label>
+			<input
+				id="margin"
+				type="number"
+				value="4"
+				oninput="document.querySelector('qr-code').margin = this.value"
+				min=0
+				max=30
+				onkeypress="return event.charCode >= 48 && event.charCode <= 57"
+			/>
+		</div>
 	</div>
-
 	<!-- Polyfill -->
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<!-- Webcomponent and dependencies -->
-	<script src="bower_components/webcomponent-qr-code/src/qr.js"></script>
+	<script src="bower_components/qrjs/qr.js"></script>
 	<script src="bower_components/webcomponent-qr-code/src/qr-code.js"></script>
-
 </body>
 </html>

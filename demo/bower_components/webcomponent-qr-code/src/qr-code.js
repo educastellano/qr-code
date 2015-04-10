@@ -1,28 +1,50 @@
 'use strict';
 
+(function(definition) {
+	if (typeof define === 'function' && define.amd) {
+		define(['QRCode'], definition);
+	} else if (typeof module === 'object' && module.exports) {
+		var QRCode = require('qrjs');
+		module.exports = definition(QRCode);
+	} else {
+		definition(window.QRCode);
+	}
+})(function(QRCode) {
+//
+// Prototype
+//
 var proto = Object.create(HTMLElement.prototype, {
-	attrs: {
-		value: ['data', 'format', 'modulesize', 'margin']
-	},
-	defineAttributes: {
-		value: function () {
-			var me = this,
-				attr;
-			for (var i=0; i<this.attrs.length; i++) {
-				attr = this.attrs[i];
-				(function (attr) {
-					Object.defineProperty(me, attr, {
-						get: function () {
-							return this.getAttribute(attr);
-						},
-						set: function (value) {
-							this.setAttribute(attr, value);
-						}
-					});
-				})(attr);
-			}
-		}
-	},
+    //
+    // Attributes
+    //
+    attrs: {
+        value: {
+            data: null,
+            format: 'png',
+            modulesize: 5,
+            margin: 4
+        }
+    },
+    defineAttributes: {
+        value: function () {
+            var attrs = Object.keys(this.attrs),
+                attr;
+            for (var i=0; i<attrs.length; i++) {
+                attr = attrs[i];
+                (function (attr) {
+                    Object.defineProperty(this, attr, {
+                        get: function () {
+                            var value = this.getAttribute(attr);
+                            return value === null ? this.attrs[attr] : value;
+                        },
+                        set: function (value) {
+                            this.setAttribute(attr, value);
+                        }
+                    });
+                }.bind(this))(attr);
+            }
+        }
+    },
     //
     // LifeCycle Callbacks
     //
@@ -30,7 +52,6 @@ var proto = Object.create(HTMLElement.prototype, {
         value: function () {
             this.createShadowRoot();
             this.defineAttributes();
-            this.setAttribute('format', 'png');
             this.generate();
         }
     },
@@ -40,37 +61,45 @@ var proto = Object.create(HTMLElement.prototype, {
             if (fn && typeof fn === 'function') {
                 fn.call(this, oldVal, newVal);
             }
-        }
-    },
-    dataChanged: {
-        value: function (oldVal, newVal) {
             this.generate();
         }
     },
     //
     // Methods
     //
+    getOptions: {
+    	value: function () {
+            var modulesize = this.modulesize,
+                margin = this.margin;
+            return {
+                modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
+                margin: margin !== null ? parseInt(margin) || -1 : margin
+            };
+    	}
+    },
     generate: {
         value: function () {
-            var modulesize = this.getAttribute('modulesize'),
-                margin = this.getAttribute('margin'),
-                options = {
-                    modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
-                    margin: margin !== null ? parseInt(margin) || -1 : margin
-                };
-            if (this.getAttribute('format') === 'png') {
-                this.generatePNG(options);
+            if (this.data !== null) {
+                if (this.format === 'png') {
+                    this.generatePNG();
+                }
+                else if (this.format === 'html') {
+                    this.generateHTML();
+                }
+                else {
+                    this.shadowRoot.innerHTML = '<div>qr-code: '+ this.format +' not supported!</div>'
+                }
             }
             else {
-                this.generateHTML(options);
+                this.shadowRoot.innerHTML = '<div>qr-code: no data!</div>'
             }
         }
     },
     generatePNG: {
-        value: function (options) {
+        value: function () {
             try {
                 var img = document.createElement('img');
-                img.src = QRCode.generatePNG(this.getAttribute('data'), options);
+                img.src = QRCode.generatePNG(this.data, this.getOptions());
                 this.clear();
                 this.shadowRoot.appendChild(img);
             }
@@ -80,8 +109,8 @@ var proto = Object.create(HTMLElement.prototype, {
         }
     },
     generateHTML: {
-        value: function (options) {
-            var div = QRCode.generateHTML(this.getAttribute('data'), options);
+        value: function () {
+            var div = QRCode.generateHTML(this.data, this.getOptions());
             this.clear();
             this.shadowRoot.appendChild(div);
         }
@@ -94,7 +123,12 @@ var proto = Object.create(HTMLElement.prototype, {
         }
     }
 });
-
+//
+// Register
+//
 document.registerElement('qr-code', {
     prototype: proto
 });
+});
+
+

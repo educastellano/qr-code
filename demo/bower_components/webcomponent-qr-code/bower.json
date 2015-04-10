@@ -1,6 +1,6 @@
 {
   "name": "qr-code",
-  "version": "0.1.2",
+  "version": "0.1.5",
   "homepage": "https://github.com/educastellano/qr-code",
   "authors": [
     "Eduard Castellano <educastellano08@gmail.com>"
@@ -20,9 +20,10 @@
     "node_modules",
     "bower_components",
     "test",
-    "tests"
+    "tests",
+    "demo"
   ],
   "dependencies": {
-    "webcomponentsjs": "~0.6.0"
+    "qrjs": "~0.1.1"
   }
 }

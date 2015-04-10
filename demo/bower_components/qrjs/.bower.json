@@ -1,0 +1,36 @@
+{
+  "name": "qr.js",
+  "main": "qr.js",
+  "version": "0.1.1",
+  "homepage": "https://github.com/educastellano/qr.js",
+  "authors": [
+    "Kang Seonghoon <kang.seonghoon@mearie.org>",
+    "Eduard Castellano <educastellano08@gmail.com>"
+  ],
+  "description": "QR code generator in Javascript",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "qr",
+    "qr.js",
+    "qrcode"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "_release": "0.1.1",
+  "_resolution": {
+    "type": "version",
+    "tag": "v0.1.1",
+    "commit": "8b9a0a98caf0ef59609f0b4168eb2c292138023c"
+  },
+  "_source": "git://github.com/educastellano/qr.js.git",
+  "_target": "~0.1.1",
+  "_originalSource": "qrjs"
+}

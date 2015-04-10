@@ -1,0 +1,24 @@
+{
+  "name": "qrjs",
+  "version": "0.1.1",
+  "description": "QR code generator in Javascript",
+  "main": "qr.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/educastellano/qr.js.git"
+  },
+  "keywords": [
+    "qr",
+    "qr.js",
+    "qrcode"
+  ],
+  "author": "Kang Seonghoon <kang.seonghoon@mearie.org>",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/educastellano/qr.js/issues"
+  },
+  "homepage": "https://github.com/educastellano/qr.js"
+}

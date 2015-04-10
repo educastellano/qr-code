@@ -5,9 +5,15 @@
  * recognize the public domain the terms of Creative Commons CC0 license
  * apply. In the other words, you can always do what you want.
  */
-
-var QRCode = (function(){
-
+(function(root, name, definition) {
+	if (typeof define === 'function' && define.amd) {
+		define([], definition);
+	} else if (typeof module === 'object' && module.exports) {
+		module.exports = definition();
+	} else {
+		root[name] = definition();
+	}
+})(this, 'QRCode', function() {
 /* Quick overview: QR code composed of 2D array of modules (a rectangular
  * area that conveys one bit of information); some modules are fixed to help
  * the recognition of the code, and remaining data modules are further divided
@@ -707,7 +713,7 @@ var QRCode = {
 		options = options || {};
 		var matrix = QRCode['generate'](data, options);
 		var modsize = Math.max(options.modulesize || 5, 0.5);
-		var margin = Math.max(options.margin || 4, 0.0);
+		var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
 
 		var e = document.createElement('div');
 		var n = matrix.length;
@@ -730,7 +736,7 @@ var QRCode = {
 		options = options || {};
 		var matrix = QRCode['generate'](data, options);
 		var modsize = Math.max(options.modulesize || 5, 0.5);
-		var margin = Math.max(options.margin || 4, 0.0);
+		var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
 		var n = matrix.length;
 		var size = modsize * (n + 2 * margin);
 
@@ -757,4 +763,4 @@ var QRCode = {
 };
 
 return QRCode;
-})();
+});
