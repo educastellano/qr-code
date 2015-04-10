@@ -46,8 +46,8 @@ Web Component for generating QR Codes, using (a fork of) [qr.js](https://github.
 	> You can also import the component with HTML Imports, but you still need to import the polyfill and the qr.js lib separately:
 	>
 	> ```html
-	<link rel="import" href="bower_components/webcomponent-qr-code/src/qr-code.html">
-	```
+	> <link rel="import" href="bower_components/webcomponent-qr-code/src/qr-code.html">
+	> ```
 
 * **Start using it!**
 
@@ -77,6 +77,10 @@ Attribute		| Options                   | Default             | Description
 
 ## History
 
+* v0.1.6 March 31, 2015
+	* Default attributes
+	* qr.js removed and used as a dependency
+	* Available in NPM
 * v0.1.1 March 31, 2015
 	* Framework-agnostic webcomponent (no use of Polymer)
 	* Available in Bower
