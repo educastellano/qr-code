@@ -4,7 +4,7 @@
 	if (typeof define === 'function' && define.amd) {
 		define(['QRCode'], definition);
 	} else if (typeof module === 'object' && module.exports) {
-		var QRCode = require('./qr.js');
+		var QRCode = require('qrjs');
 		module.exports = definition(QRCode);
 	} else {
 		definition(window.QRCode);
