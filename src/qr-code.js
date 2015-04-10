@@ -11,31 +11,40 @@
 	}
 })(function(QRCode) {
 //
-// Prototype definition
+// Prototype
 //
 var proto = Object.create(HTMLElement.prototype, {
-	attrs: {
-		value: ['data', 'format', 'modulesize', 'margin']
-	},
-	defineAttributes: {
-		value: function () {
-			var me = this,
-				attr;
-			for (var i=0; i<this.attrs.length; i++) {
-				attr = this.attrs[i];
-				(function (attr) {
-					Object.defineProperty(me, attr, {
-						get: function () {
-							return this.getAttribute(attr);
-						},
-						set: function (value) {
-							this.setAttribute(attr, value);
-						}
-					});
-				})(attr);
-			}
-		}
-	},
+    //
+    // Attributes
+    //
+    attrs: {
+        value: {
+            data: null,
+            format: 'png',
+            modulesize: 5,
+            margin: 4
+        }
+    },
+    defineAttributes: {
+        value: function () {
+            var attrs = Object.keys(this.attrs),
+                attr;
+            for (var i=0; i<attrs.length; i++) {
+                attr = attrs[i];
+                (function (attr) {
+                    Object.defineProperty(this, attr, {
+                        get: function () {
+                            var value = this.getAttribute(attr);
+                            return value === null ? this.attrs[attr] : value;
+                        },
+                        set: function (value) {
+                            this.setAttribute(attr, value);
+                        }
+                    });
+                }.bind(this))(attr);
+            }
+        }
+    },
     //
     // LifeCycle Callbacks
     //
@@ -43,7 +52,6 @@ var proto = Object.create(HTMLElement.prototype, {
         value: function () {
             this.createShadowRoot();
             this.defineAttributes();
-            this.setAttribute('format', 'png');
             this.generate();
         }
     },
@@ -53,10 +61,6 @@ var proto = Object.create(HTMLElement.prototype, {
             if (fn && typeof fn === 'function') {
                 fn.call(this, oldVal, newVal);
             }
-        }
-    },
-    dataChanged: {
-        value: function (oldVal, newVal) {
             this.generate();
         }
     },
@@ -65,17 +69,25 @@ var proto = Object.create(HTMLElement.prototype, {
     //
     generate: {
         value: function () {
-            var modulesize = this.getAttribute('modulesize'),
-                margin = this.getAttribute('margin'),
+            var modulesize = this.modulesize,
+                margin = this.margin,
                 options = {
                     modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
                     margin: margin !== null ? parseInt(margin) || -1 : margin
                 };
-            if (this.getAttribute('format') === 'png') {
-                this.generatePNG(options);
+            if (this.data !== null) {
+                if (this.format === 'png') {
+                    this.generatePNG(options);
+                }
+                else if (this.format === 'html') {
+                    this.generateHTML(options);
+                }
+                else {
+                    this.shadowRoot.innerHTML = '<div>qr-code: '+ this.format +' not supported!</div>'
+                }
             }
             else {
-                this.generateHTML(options);
+                this.shadowRoot.innerHTML = '<div>qr-code: no data!</div>'
             }
         }
     },
@@ -83,7 +95,7 @@ var proto = Object.create(HTMLElement.prototype, {
         value: function (options) {
             try {
                 var img = document.createElement('img');
-                img.src = QRCode.generatePNG(this.getAttribute('data'), options);
+                img.src = QRCode.generatePNG(this.data, options);
                 this.clear();
                 this.shadowRoot.appendChild(img);
             }
@@ -94,7 +106,7 @@ var proto = Object.create(HTMLElement.prototype, {
     },
     generateHTML: {
         value: function (options) {
-            var div = QRCode.generateHTML(this.getAttribute('data'), options);
+            var div = QRCode.generateHTML(this.data, options);
             this.clear();
             this.shadowRoot.appendChild(div);
         }
@@ -108,7 +120,7 @@ var proto = Object.create(HTMLElement.prototype, {
     }
 });
 //
-// Registering
+// Register
 //
 document.registerElement('qr-code', {
     prototype: proto
