@@ -73,7 +73,7 @@ var proto = Object.create(HTMLElement.prototype, {
                 margin = this.margin;
             return {
                 modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
-                margin: margin !== null ? parseInt(margin) || -1 : margin
+                margin: margin !== null ? parseInt(margin) : margin
             };
     	}
     },
