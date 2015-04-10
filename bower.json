@@ -24,6 +24,7 @@
     "demo"
   ],
   "dependencies": {
-    "webcomponentsjs": "~0.6.0"
+    "webcomponentsjs": "~0.6.0",
+    "qrjs": "~0.1.1"
   }
 }
