@@ -1,6 +1,6 @@
 # &lt;qr-code&gt;
 
-Web Component for generating QR Codes, using [qr.js](https://github.com/lifthrasiir/qr.js) lib.
+Web Component for generating QR Codes, using (a fork of) [qr.js](https://github.com/lifthrasiir/qr.js) lib.
 
 > Maintained by [Eduard Castellano](https://github.com/educastellano).
 
@@ -8,54 +8,48 @@ Web Component for generating QR Codes, using [qr.js](https://github.com/lifthras
 
 > [Check it live](http://educastellano.github.io/qr-code/demo).
 
-## Install
-```sh
-npm install webcomponent-qr-code
-```
-or
-```sh
-bower install webcomponent-qr-code
-```
-
 ## Usage
 
-1. **Import the** [polyfill](https://github.com/WebComponents/webcomponentsjs):
+* **NPM and Browserify** ([polyfill](https://github.com/WebComponents/webcomponentsjs) and the component):
 
-* With Browserify:
+	Install:
+
+	```sh
+	npm install webcomponents.js
+	npm install webcomponent-qr-code
+	```
+
+	Import:
 
 	```js
-	require('<path-libs>/webcomponents.js/webcomponents');
+	require('node_modules/webcomponents.js/webcomponents');
+	require('node_modules/webcomponent-qr-code/src/qr-code');
 	```
-* Without it:
+
+* **Bower** ([polyfill](https://github.com/WebComponents/webcomponentsjs), [qr.js](https://github.com/educastellano/qr.js) and the component):
+
+	Install:
+
+	```sh
+	bower install webcomponentsjs
+	bower install webcomponent-qr-code
+	```
+
+	Import:
 
 	```html
-	<script src="<path-libs>/webcomponentsjs/webcomponents.min.js"></script>
+	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
+	<script src="bower_components/webcomponent-qr-code/src/qr.js"></script>
+	<script src="bower_components/webcomponent-qr-code/src/qr-code.js"></script>
 	```
 
-2. **Import the component**
-
-* With Browserify:
-
-	```js
-	require('<path-libs>/webcomponent-qr-code/src/qr-code');
-	```
-
-* Without it ([qr.js](https://github.com/lifthrasiir/qr.js) and the component):
-
-	```html
-	<script src="<path-libs>/webcomponent-qr-code/src/qr.js"></script>
-	<script src="<path-libs>/webcomponent-qr-code/src/qr-code.js"></script>
-	```
-
-* With [HTML Imports](http://w3c.github.io/webcomponents/spec/imports/):
-
-	```html
+	> You can also import the component with HTML Imports, but you still need to import the polyfill and the qr.js lib separately:
+	>
+	> ```html
 	<link rel="import" href="bower_components/webcomponent-qr-code/src/qr-code.html">
 	```
 
-
-
-3. **Start using it!**
+* **Start using it!**
 
 	```html
 	<qr-code data="hello world!"></qr-code>
