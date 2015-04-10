@@ -67,20 +67,24 @@ var proto = Object.create(HTMLElement.prototype, {
     //
     // Methods
     //
+    getOptions: {
+    	value: function () {
+            var modulesize = this.modulesize,
+                margin = this.margin;
+            return {
+                modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
+                margin: margin !== null ? parseInt(margin) || -1 : margin
+            };
+    	}
+    },
     generate: {
         value: function () {
-            var modulesize = this.modulesize,
-                margin = this.margin,
-                options = {
-                    modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
-                    margin: margin !== null ? parseInt(margin) || -1 : margin
-                };
             if (this.data !== null) {
                 if (this.format === 'png') {
-                    this.generatePNG(options);
+                    this.generatePNG();
                 }
                 else if (this.format === 'html') {
-                    this.generateHTML(options);
+                    this.generateHTML();
                 }
                 else {
                     this.shadowRoot.innerHTML = '<div>qr-code: '+ this.format +' not supported!</div>'
@@ -92,10 +96,10 @@ var proto = Object.create(HTMLElement.prototype, {
         }
     },
     generatePNG: {
-        value: function (options) {
+        value: function () {
             try {
                 var img = document.createElement('img');
-                img.src = QRCode.generatePNG(this.data, options);
+                img.src = QRCode.generatePNG(this.data, this.getOptions());
                 this.clear();
                 this.shadowRoot.appendChild(img);
             }
@@ -105,8 +109,8 @@ var proto = Object.create(HTMLElement.prototype, {
         }
     },
     generateHTML: {
-        value: function (options) {
-            var div = QRCode.generateHTML(this.data, options);
+        value: function () {
+            var div = QRCode.generateHTML(this.data, this.getOptions());
             this.clear();
             this.shadowRoot.appendChild(div);
         }

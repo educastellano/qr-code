@@ -19,7 +19,7 @@ bower install webcomponent-qr-code
 
 ## Usage
 
-1. Import the [polyfill](https://github.com/WebComponents/webcomponentsjs):
+1. **Import the** [polyfill](https://github.com/WebComponents/webcomponentsjs):
 
 * With Browserify:
 
@@ -32,7 +32,7 @@ bower install webcomponent-qr-code
 	<script src="<path-libs>/webcomponentsjs/webcomponents.min.js"></script>
 	```
 
-2. Import the component
+2. **Import the component**
 
 * With Browserify:
 
@@ -55,7 +55,7 @@ bower install webcomponent-qr-code
 
 
 
-2. Start using it!
+3. **Start using it!**
 
 	```html
 	<qr-code data="hello world!"></qr-code>
