@@ -77,7 +77,9 @@ Attribute		| Options                   | Default             | Description
 
 ## History
 
-* v0.1.6 March 31, 2015
+* v0.1.7 April 11, 2015
+	* Support for SVG
+* v0.1.6 April 10, 2015
 	* Default attributes
 	* qr.js removed and used as a dependency
 	* Available in NPM
