@@ -1,6 +1,6 @@
 {
   "name": "webcomponent-qr-code",
-  "version": "0.1.6",
+  "version": "0.1.7",
   "description": "Web Component for generating QR codes",
   "main": "qr-code.js",
   "scripts": {
@@ -24,6 +24,6 @@
   },
   "homepage": "https://github.com/educastellano/qr-code",
   "dependencies": {
-    "qrjs": "^0.1.1"
+    "qrjs": "^0.1.2"
   }
 }

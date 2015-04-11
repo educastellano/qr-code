@@ -62,7 +62,7 @@ Web Component for generating QR Codes, using (a [fork](https://github.com/educas
 Attribute		| Options                   | Default             | Description
 ---				| ---                       | ---                 | ---
 `data`			| *string*                  | `null`	          | The information encoded by the QR code.
-`format`		| `png`, `html`				| `png`               | Format of the QR code rendered inside the component.
+`format`		| `png`, `html`, `svg`		| `png`               | Format of the QR code rendered inside the component.
 `modulesize`	| *int*						| `5`				  | Size of the modules in *pixels*.
 `margin`		| *int*						| `4`				  | Margin of the QR code in *modules*.
 

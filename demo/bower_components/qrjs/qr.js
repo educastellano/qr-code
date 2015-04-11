@@ -732,6 +732,44 @@ var QRCode = {
 		return e;
 	},
 
+	'generateSVG': function(data, options) {
+		options = options || {};
+		var matrix = QRCode['generate'](data, options);
+		var n = matrix.length;
+		var modsize = Math.max(options.modulesize || 5, 0.5);
+		var margin = Math.max(options.margin !== null ? options.margin : 4, 0.0);
+		var size = modsize * (n + 2 * margin);
+
+		var common = ' class= "fg"'+' width="'+modsize+'" height="'+modsize+'"/>';
+
+		var e = document.createElementNS('http://www.w3.org/2000/svg', 'svg');
+		e.setAttribute('viewBox', '0 0 '+size+' '+size);
+		e.setAttribute('style', 'shape-rendering:crispEdges');
+		if (options.modulesize) {
+            e.setAttribute('width', size);
+            e.setAttribute('height', size);
+        }
+
+		var svg = [
+			'<style scoped>.bg{fill:#FFF}.fg{fill:#000}</style>',
+			'<rect class="bg" x="0" y="0"',
+			'width="'+size+'" height="'+size+'"/>',
+		];
+
+		var yo = margin * modsize;
+		for (var y = 0; y < n; ++y) {
+			var xo = margin * modsize;
+			for (var x = 0; x < n; ++x) {
+				if (matrix[y][x])
+					svg.push('<rect x="'+xo+'" y="'+yo+'"', common);
+				xo += modsize;
+			}
+			yo += modsize;
+		}
+		e.innerHTML = svg.join('');
+		return e;
+	},
+
 	'generatePNG': function(data, options) {
 		options = options || {};
 		var matrix = QRCode['generate'](data, options);

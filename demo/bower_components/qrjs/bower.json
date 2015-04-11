@@ -1,7 +1,7 @@
 {
-  "name": "qr.js",
+  "name": "qrjs",
   "main": "qr.js",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "homepage": "https://github.com/educastellano/qr.js",
   "authors": [
     "Kang Seonghoon <kang.seonghoon@mearie.org>",

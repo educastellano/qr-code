@@ -23,6 +23,9 @@
 			width: 150px;
 			text-align: right;
 		}
+		#scalable {
+			display: none;
+		}
 	</style>
 </head>
 <body>
@@ -43,9 +46,11 @@
 			<label for="format">Format</label>
 			<select
 				id="format"
-				onchange="document.querySelector('qr-code').format = this.value">
+				onchange="document.querySelector('qr-code').format = this.value;
+						  document.querySelector('#scalable').style.display = this.value === 'svg' ? 'inline' : 'none'">
 				<option value="png" selected>PNG</option>
 				<option value="html">HTML</option>
+				<option value="svg">SVG</option>
 			</select>
 			<br>
 			<label for="modulesize">Module size</label>
@@ -54,10 +59,11 @@
 				type="number"
 				value="5"
 				oninput="document.querySelector('qr-code').modulesize = this.value"
-				min=1
+				min=0
 				max=30
 				onkeypress="return event.charCode >= 48 && event.charCode <= 57"
 			/>
+			<small id="scalable">"scalable" size if set to 0</small>
 			<br>
 			<label for="margin">Margin</label>
 			<input
@@ -75,6 +81,6 @@
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
 	<!-- Webcomponent and dependencies -->
 	<script src="bower_components/qrjs/qr.js"></script>
-	<script src="bower_components/webcomponent-qr-code/src/qr-code.js"></script>
+	<script src="../src/qr-code.js"></script>
 </body>
 </html>

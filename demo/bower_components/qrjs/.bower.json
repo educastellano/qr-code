@@ -1,7 +1,7 @@
 {
-  "name": "qr.js",
+  "name": "qrjs",
   "main": "qr.js",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "homepage": "https://github.com/educastellano/qr.js",
   "authors": [
     "Kang Seonghoon <kang.seonghoon@mearie.org>",
@@ -24,11 +24,11 @@
     "test",
     "tests"
   ],
-  "_release": "0.1.1",
+  "_release": "0.1.2",
   "_resolution": {
     "type": "version",
-    "tag": "v0.1.1",
-    "commit": "8b9a0a98caf0ef59609f0b4168eb2c292138023c"
+    "tag": "v0.1.2",
+    "commit": "dbfa732cb309195a51a656b021f309d354154e04"
   },
   "_source": "git://github.com/educastellano/qr.js.git",
   "_target": "~0.1.1",

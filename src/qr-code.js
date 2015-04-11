@@ -86,6 +86,9 @@ var proto = Object.create(HTMLElement.prototype, {
                 else if (this.format === 'html') {
                     this.generateHTML();
                 }
+                else if (this.format === 'svg') {
+                    this.generateSVG();
+                }
                 else {
                     this.shadowRoot.innerHTML = '<div>qr-code: '+ this.format +' not supported!</div>'
                 }
@@ -111,6 +114,13 @@ var proto = Object.create(HTMLElement.prototype, {
     generateHTML: {
         value: function () {
             var div = QRCode.generateHTML(this.data, this.getOptions());
+            this.clear();
+            this.shadowRoot.appendChild(div);
+        }
+    },
+    generateSVG: {
+        value: function () {
+            var div = QRCode.generateSVG(this.data, this.getOptions());
             this.clear();
             this.shadowRoot.appendChild(div);
         }
