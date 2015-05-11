@@ -12,7 +12,8 @@
     "qrcode",
     "qr-code",
     "webcomponent",
-    "customelement"
+    "customelement",
+    "web-components"
   ],
   "license": "MIT",
   "ignore": [
