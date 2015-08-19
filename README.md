@@ -22,8 +22,8 @@ Web Component for generating QR Codes, using (a [fork](https://github.com/educas
 	Import:
 
 	```js
-	require('node_modules/webcomponents.js/webcomponents');
-	require('node_modules/webcomponent-qr-code/src/qr-code');
+	require('webcomponents.js');
+	require('webcomponent-qr-code');
 	```
 
 * **Bower** ([polyfill](https://github.com/WebComponents/webcomponentsjs), [qr.js](https://github.com/educastellano/qr.js) and the component):
