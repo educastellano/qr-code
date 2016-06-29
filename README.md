@@ -39,8 +39,8 @@ Web Component for generating QR Codes, using (a [fork](https://github.com/educas
 
 	```html
 	<script src="bower_components/webcomponentsjs/webcomponents.min.js"></script>
-	<script src="bower_components/qrjs/qr.js"></script>
-	<script src="bower_components/webcomponent-qr-code/src/qr-code.js"></script>
+	<script src="bower_components/qr.js/qr.js"></script>
+	<script src="bower_components/qr-code/src/qr-code.js"></script>
 	```
 
 	> You can also import the component with [HTML Imports](http://w3c.github.io/webcomponents/spec/imports/), but you still need to import the polyfill and the qr.js lib separately:
