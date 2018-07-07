@@ -44,8 +44,7 @@ Attribute       | Options                   | Default             | Description
 4. Push to the branch: `git push origin my-new-feature`
 5. Submit a pull request :D
 
-## History
-
+## Changelog
 * v0.1.9 December 9, 2016
     * Just updated docs
 * v0.1.7 April 11, 2015
