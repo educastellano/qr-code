@@ -1,14 +1,14 @@
 'use strict';
 
 (function(definition) {
-	if (typeof define === 'function' && define.amd) {
-		define(['QRCode'], definition);
-	} else if (typeof module === 'object' && module.exports) {
-		var QRCode = require('qrjs');
-		module.exports = definition(QRCode);
-	} else {
-		definition(window.QRCode);
-	}
+    if (typeof define === 'function' && define.amd) {
+        define(['QRCode'], definition);
+    } else if (typeof module === 'object' && module.exports) {
+        var QRCode = require('qrjs');
+        module.exports = definition(QRCode);
+    } else {
+        definition(window.QRCode);
+    }
 })(function(QRCode) {
 //
 // Prototype
@@ -68,14 +68,14 @@ var proto = Object.create(HTMLElement.prototype, {
     // Methods
     //
     getOptions: {
-    	value: function () {
+        value: function () {
             var modulesize = this.modulesize,
                 margin = this.margin;
             return {
                 modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
                 margin: margin !== null ? parseInt(margin) : margin
             };
-    	}
+        }
     },
     generate: {
         value: function () {
@@ -140,5 +140,4 @@ document.registerElement('qr-code', {
     prototype: proto
 });
 });
-
 

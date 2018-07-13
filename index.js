@@ -1,1 +1,3 @@
-require('./src/qr-code.js')
+import QRCode from './qr-code'
+
+customElements.define('qr-code', QRCode)

@@ -1,3 +1,20 @@
+(function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+'use strict';
+
+require('..');
+
+},{"..":2}],2:[function(require,module,exports){
+'use strict';
+
+var _qrCode = require('./qr-code');
+
+var _qrCode2 = _interopRequireDefault(_qrCode);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+customElements.define('qr-code', _qrCode2.default);
+
+},{"./qr-code":4}],3:[function(require,module,exports){
 /* qr.js -- QR code generator in Javascript (revision 2011-01-19)
  * Written by Kang Seonghoon <public+qrjs@mearie.org>.
  *
@@ -802,3 +819,156 @@ var QRCode = {
 
 return QRCode;
 });
+
+},{}],4:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _qrjs = require('qrjs');
+
+var _qrjs2 = _interopRequireDefault(_qrjs);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var QRCode = function (_HTMLElement) {
+    _inherits(QRCode, _HTMLElement);
+
+    function QRCode() {
+        _classCallCheck(this, QRCode);
+
+        // method bindings
+        var _this = _possibleConstructorReturn(this, (QRCode.__proto__ || Object.getPrototypeOf(QRCode)).call(this));
+
+        _this._defineProperty = _this._defineProperty.bind(_this);
+        // Shadow DOM
+        _this.attachShadow({ mode: 'open' });
+        // Define Properties
+        Object.keys(QRCode.defaultAttributes).map(_this._defineProperty);
+        return _this;
+    }
+
+    _createClass(QRCode, [{
+        key: 'attributeChangedCallback',
+
+        // LifeCycle Callbacks
+        //
+        value: function attributeChangedCallback(attributeName, oldValue, newValue) {
+            var fn = this[attributeName + 'Changed'];
+            if (fn && typeof fn === 'function') {
+                fn.call(this, oldValue, newValue);
+            }
+            this.generate();
+        }
+        // Methods
+        //
+
+    }, {
+        key: '_defineProperty',
+        value: function _defineProperty(attributeName) {
+            var _this2 = this;
+
+            Object.defineProperty(this, attributeName, {
+                get: function get() {
+                    var value = _this2.getAttribute(attributeName);
+                    return value === null ? QRCode.defaultAttributes[attributeName] : value;
+                },
+                set: function set(value) {
+                    _this2.setAttribute(attributeName, value);
+                }
+            });
+        }
+    }, {
+        key: 'getOptions',
+        value: function getOptions() {
+            var modulesize = this.modulesize,
+                margin = this.margin;
+
+            return {
+                modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
+                margin: margin !== null ? parseInt(margin) : margin
+            };
+        }
+    }, {
+        key: 'generate',
+        value: function generate() {
+            if (this.data !== null) {
+                if (this.format === 'png') {
+                    this.generatePNG();
+                } else if (this.format === 'html') {
+                    this.generateHTML();
+                } else if (this.format === 'svg') {
+                    this.generateSVG();
+                } else {
+                    this.shadowRoot.innerHTML = '<div>qr-code: ' + this.format + ' not supported!</div>';
+                }
+            } else {
+                this.shadowRoot.innerHTML = '<div>qr-code: no data!</div>';
+            }
+        }
+    }, {
+        key: 'generatePNG',
+        value: function generatePNG() {
+            try {
+                var img = document.createElement('img');
+                img.src = _qrjs2.default.generatePNG(this.data, this.getOptions());
+                this.clear();
+                this.shadowRoot.appendChild(img);
+            } catch (e) {
+                this.shadowRoot.innerHTML = '<div>qr-code: no canvas support!</div>';
+            }
+        }
+    }, {
+        key: 'generateHTML',
+        value: function generateHTML() {
+            var div = _qrjs2.default.generateHTML(this.data, this.getOptions());
+            this.clear();
+            this.shadowRoot.appendChild(div);
+        }
+    }, {
+        key: 'generateSVG',
+        value: function generateSVG() {
+            var div = _qrjs2.default.generateSVG(this.data, this.getOptions());
+            this.clear();
+            this.shadowRoot.appendChild(div);
+        }
+    }, {
+        key: 'clear',
+        value: function clear() {
+            while (this.shadowRoot.lastChild) {
+                this.shadowRoot.removeChild(this.shadowRoot.lastChild);
+            }
+        }
+    }], [{
+        key: 'defaultAttributes',
+        get: function get() {
+            return {
+                data: null,
+                format: 'png',
+                modulesize: 5,
+                margin: 4
+            };
+        }
+    }, {
+        key: 'observedAttributes',
+        get: function get() {
+            return Object.keys(QRCode.defaultAttributes);
+        }
+    }]);
+
+    return QRCode;
+}(HTMLElement);
+
+exports.default = QRCode;
+
+},{"qrjs":3}]},{},[1]);
