@@ -1,53 +1,50 @@
+import _QRCode from 'qrjs'
 
 export default class QRCode extends HTMLElement {
     constructor() {
         super()
+        // method bindings
+        this._defineProperty = this._defineProperty.bind(this)
+        // Shadow DOM
         this.attachShadow({ mode: 'open' })
-        this.defineAttributes()
+        // Define Properties
+        Object.keys(QRCode.defaultAttributes).map(this._defineProperty)
     }
-    //
-    // LifeCycle Callbacks
-    //
-    connectedCallback() {
-        this.generate()
-    }
-    attributeChangedCallback(attrName, oldVal, newVal) {
-        var fn = this[attrName+'Changed'];
-        if (fn && typeof fn === 'function') {
-            fn.call(this, oldVal, newVal);
-        }
-        this.generate();
-    }
-    //
-    // Methods
-    //
-    defineAttributes() {
-        let attributes = {
+    static get defaultAttributes() {
+        return { 
             data: null,
             format: 'png',
             modulesize: 5,
             margin: 4
         }
-        var attrs = Object.keys(attributes),
-            attr;
-        for (var i=0; i<attrs.length; i++) {
-            attr = attrs[i];
-            (function (attr) {
-                Object.defineProperty(this, attr, {
-                    get: function () {
-                        var value = this.getAttribute(attr);
-                        return value === null ? this.attrs[attr] : value;
-                    },
-                    set: function (value) {
-                        this.setAttribute(attr, value);
-                    }
-                });
-            }.bind(this))(attr);
-        }
     }
-    getOptions(){
-        var modulesize = this.modulesize,
-            margin = this.margin;
+    static get observedAttributes() {
+        return Object.keys(QRCode.defaultAttributes)
+    }
+    // LifeCycle Callbacks
+    //
+    attributeChangedCallback(attributeName, oldValue, newValue) {
+        let fn = this[attributeName+'Changed']
+        if (fn && typeof fn === 'function') {
+            fn.call(this, oldValue, newValue)
+        }
+        this.generate()
+    }
+    // Methods
+    //
+    _defineProperty(attributeName) {
+        Object.defineProperty(this, attributeName, {
+            get: () => {
+                let value = this.getAttribute(attributeName)
+                return value === null ? QRCode.defaultAttributes[attributeName] : value
+            },
+            set: value => {
+                this.setAttribute(attributeName, value)
+            }
+        })
+    }
+    getOptions() {
+        let { modulesize, margin } = this
         return {
             modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
             margin: margin !== null ? parseInt(margin) : margin
@@ -56,13 +53,13 @@ export default class QRCode extends HTMLElement {
     generate() {
         if (this.data !== null) {
             if (this.format === 'png') {
-                this.generatePNG();
+                this.generatePNG()
             }
             else if (this.format === 'html') {
-                this.generateHTML();
+                this.generateHTML()
             }
             else if (this.format === 'svg') {
-                this.generateSVG();
+                this.generateSVG()
             }
             else {
                 this.shadowRoot.innerHTML = '<div>qr-code: '+ this.format +' not supported!</div>'
@@ -74,28 +71,28 @@ export default class QRCode extends HTMLElement {
     }
     generatePNG() {
         try {
-            var img = document.createElement('img');
-            img.src = QRCode.generatePNG(this.data, this.getOptions());
-            this.clear();
-            this.shadowRoot.appendChild(img);
+            let img = document.createElement('img')
+            img.src = _QRCode.generatePNG(this.data, this.getOptions())
+            this.clear()
+            this.shadowRoot.appendChild(img)
         }
         catch (e) {
             this.shadowRoot.innerHTML = '<div>qr-code: no canvas support!</div>'
         }
     }
     generateHTML() {
-        var div = QRCode.generateHTML(this.data, this.getOptions());
-        this.clear();
-        this.shadowRoot.appendChild(div);
+        let div = _QRCode.generateHTML(this.data, this.getOptions())
+        this.clear()
+        this.shadowRoot.appendChild(div)
     }
     generateSVG() {
-        var div = QRCode.generateSVG(this.data, this.getOptions());
-        this.clear();
-        this.shadowRoot.appendChild(div);
+        let div = _QRCode.generateSVG(this.data, this.getOptions())
+        this.clear()
+        this.shadowRoot.appendChild(div)
     }
     clear() {
         while (this.shadowRoot.lastChild) {
-            this.shadowRoot.removeChild(this.shadowRoot.lastChild);
+            this.shadowRoot.removeChild(this.shadowRoot.lastChild)
         }
     }
 }

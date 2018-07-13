@@ -1,1 +1,2 @@
-require('./src/qr-code.js')
+// require('./lib')
+require('./src')

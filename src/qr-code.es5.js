@@ -139,6 +139,7 @@ var proto = Object.create(HTMLElement.prototype, {
 document.registerElement('qr-code', {
     prototype: proto
 });
+
 });
 
 

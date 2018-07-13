@@ -8,7 +8,7 @@ Web Component for generating QR Codes, using (a [fork](https://github.com/educas
 
 ## Prerequisites
 
-* [webcomponents](https://www.npmjs.com/package/webcomponents.js) polyfill for fully browser support:
+* [webcomponents](https://www.npmjs.com/package/@webcomponents/webcomponentsjs) polyfill for full browser support:
 
 ## Install
 
@@ -18,12 +18,37 @@ npm install webcomponent-qr-code
 
 ## Usage
 
+Import the Polyfills:
+
+```js
+import '@webcomponents/webcomponentsjs/webcomponents-loader.js'
+import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'
+```
+
+Import the component:
+
 ```js
 import 'webcomponent-qr-code'
 ```
 
+Use it!
+
 ```html
 <qr-code data="hello world!"></qr-code>
+```
+
+---
+
+If you want to use another name for the element:
+
+```js
+import { QRCode } from 'webcomponent-qr-code'
+
+customElements.define('myapp-qrcode', QRCode)
+```
+
+```html
+<myapp-qrcode data="hello world!"></myapp-qrcode>
 ```
 
 ## Options
