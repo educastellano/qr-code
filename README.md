@@ -18,31 +18,18 @@ npm install webcomponent-qr-code
 
 ## Usage
 
-Import the Polyfills:
-
-```js
-import '@webcomponents/webcomponentsjs/webcomponents-loader.js'
-import '@webcomponents/webcomponentsjs/custom-elements-es5-adapter.js'
-```
-
-Import the component:
-
 ```js
 import 'webcomponent-qr-code'
 ```
-
-Use it!
 
 ```html
 <qr-code data="hello world!"></qr-code>
 ```
 
----
-
-If you want to use another name for the element:
+**Custom element name**
 
 ```js
-import { QRCode } from 'webcomponent-qr-code'
+import QRCode from 'webcomponent-qr-code/qr-code'
 
 customElements.define('myapp-qrcode', QRCode)
 ```
@@ -50,6 +37,17 @@ customElements.define('myapp-qrcode', QRCode)
 ```html
 <myapp-qrcode data="hello world!"></myapp-qrcode>
 ```
+
+**Support for older browsers - It uses ES5 and document.registerElement()**
+
+```js
+import 'webcomponent-qr-code/qr-code.es5'
+```
+
+```html
+<qr-code data="hello world!"></qr-code>
+```
+
 
 ## Options
 
@@ -70,8 +68,12 @@ Attribute       | Options                   | Default             | Description
 5. Submit a pull request :D
 
 ## Changelog
+* v1.0.0 July 13, 2018
+    * Use new API customElements.define
+    * Support for a custom element name
+    * Keep support for document.register() in /qr-code.es5.js
 * v0.1.9 December 9, 2016
-    * Just updated docs
+    * Updated docs
 * v0.1.7 April 11, 2015
     * Support for SVG
 * v0.1.6 April 10, 2015
