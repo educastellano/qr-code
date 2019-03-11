@@ -11,13 +11,13 @@ Web Component for generating QR Codes, using (a [fork](https://github.com/educas
 ## Install
 
 ```sh
-npm install qr-code
+npm install webcomponent-qr-code
 ```
 
 ## Usage
 
 ```js
-import 'qr-code'
+import 'webcomponent-qr-code'
 ```
 
 <!--
@@ -25,7 +25,7 @@ import 'qr-code'
 <custom-element-demo>
   <template>
     <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <script src="index.js"></script>
+    <link rel="import" href="qr-code.html">
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
@@ -38,7 +38,7 @@ import 'qr-code'
 **Custom element name:**
 
 ```js
-import QRCode from 'qr-code/qr-code'
+import QRCode from 'webcomponent-qr-code/qr-code'
 
 customElements.define('myapp-qrcode', QRCode)
 ```
