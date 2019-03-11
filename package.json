@@ -4,8 +4,8 @@
   "description": "Web Component for generating QR codes",
   "main": "index.js",
   "scripts": {
-    "start": "npm run browserify && http-server",
-    "browserify": "browserify demo/index.js -o demo/bundle.js -t [ babelify --presets [ 'babel-preset-env' ] ]",
+    "start": "npm run build-demo && http-server",
+    "build-demo": "browserify demo/index.js -o demo/bundle.js -t [ babelify --presets [ 'babel-preset-env' ] ]",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
   },
@@ -34,7 +34,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "babelify": "^8.0.0",
-    "browserify": "^16.2.2",
+    "browserify": "^16.2.3",
     "http-server": "^0.11.1"
   }
 }
