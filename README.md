@@ -1,3 +1,5 @@
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/educastellano/qr-code)
+
 # &lt;qr-code&gt;
 
 Web Component for generating QR Codes, using (a [fork](https://github.com/educastellano/qr.js) of) [qr.js](https://github.com/lifthrasiir/qr.js) lib.
@@ -5,10 +7,6 @@ Web Component for generating QR Codes, using (a [fork](https://github.com/educas
 ## Demo
 
 > [Check it live](http://educastellano.github.io/qr-code/demo).
-
-## Prerequisites
-
-* [webcomponents](https://www.npmjs.com/package/@webcomponents/webcomponentsjs) polyfill for full browser support:
 
 ## Install
 
@@ -22,11 +20,22 @@ npm install webcomponent-qr-code
 import 'webcomponent-qr-code'
 ```
 
+<!--
+```
+<custom-element-demo>
+  <template>
+    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
+    <link rel="import" href="qr-code.html">
+    <next-code-block></next-code-block>
+  </template>
+</custom-element-demo>
+```
+-->
 ```html
 <qr-code data="hello world!"></qr-code>
 ```
 
-**Custom element name**
+**Custom element name:**
 
 ```js
 import QRCode from 'webcomponent-qr-code/qr-code'
@@ -38,15 +47,6 @@ customElements.define('myapp-qrcode', QRCode)
 <myapp-qrcode data="hello world!"></myapp-qrcode>
 ```
 
-**Support for older browsers - It uses ES5 and document.registerElement()**
-
-```js
-import 'webcomponent-qr-code/qr-code.es5'
-```
-
-```html
-<qr-code data="hello world!"></qr-code>
-```
 
 
 ## Options
