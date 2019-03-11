@@ -33,6 +33,9 @@
     "qrjs": "^0.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
+    "babel-loader": "^8.0.5",
     "concurrently": "^4.1.0",
     "http-server": "^0.11.1",
     "webpack": "^4.29.6",
