@@ -5,7 +5,7 @@
   "main": "index.js",
   "scripts": {
     "start": "npm run build-demo && http-server",
-    "build-demo": "browserify demo/index.js -o demo/bundle.js -t [ babelify --presets [ 'babel-preset-env' ] ]",
+    "build-demo": "browserify demo/index.js -o demo/bundle.js -t [ babelify --presets [ '@babel/preset-env' ] ]",
     "test": "echo \"Error: no test specified\" && exit 1",
     "postversion": "git push && git push --tags"
   },
@@ -30,10 +30,10 @@
     "qrjs": "^0.1.2"
   },
   "devDependencies": {
+    "@babel/core": "^7.3.4",
+    "@babel/preset-env": "^7.3.4",
     "@webcomponents/webcomponentsjs": "^2.0.2",
-    "babel-core": "^6.26.3",
-    "babel-preset-env": "^1.7.0",
-    "babelify": "^8.0.0",
+    "babelify": "^10.0.0",
     "browserify": "^16.2.3",
     "http-server": "^0.11.1"
   }
