@@ -1,4 +1,4 @@
-[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/educastellano/qr-code)
+[![Published on webcomponents.org](https://img.shields.io/badge/webcomponents.org-published-blue.svg)](https://www.webcomponents.org/element/webcomponent-qr-code)
 
 # &lt;qr-code&gt;
 
@@ -24,8 +24,8 @@ import 'webcomponent-qr-code'
 ```
 <custom-element-demo>
   <template>
-    <script src="../webcomponentsjs/webcomponents-lite.js"></script>
-    <link rel="import" href="qr-code.html">
+    <script src="demo/webcomponents-lite.js"></script>
+    <script src="index.js"></script>
     <next-code-block></next-code-block>
   </template>
 </custom-element-demo>
