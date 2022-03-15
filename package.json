@@ -1,6 +1,6 @@
 {
   "name": "webcomponent-qr-code",
-  "version": "1.0.5",
+  "version": "1.0.6",
   "description": "Web Component for generating QR codes",
   "main": "dist/index.bundle.js",
   "scripts": {
