@@ -1,3 +1,5 @@
 import QRCode from './qr-code'
 
-customElements.define('qr-code', QRCode)
+if (!customElements.get('qr-code')) {
+  customElements.define('qr-code', QRCode)
+}
