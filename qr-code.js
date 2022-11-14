@@ -11,7 +11,7 @@ export default class QRCode extends HTMLElement {
         Object.keys(QRCode.defaultAttributes).map(this._defineProperty)
     }
     static get defaultAttributes() {
-        return { 
+        return {
             data: null,
             format: 'png',
             modulesize: 5,
@@ -51,6 +51,7 @@ export default class QRCode extends HTMLElement {
         }
     }
     generate() {
+        this.clear()
         if (this.data !== null) {
             if (this.format === 'png') {
                 this.generatePNG()
@@ -62,32 +63,29 @@ export default class QRCode extends HTMLElement {
                 this.generateSVG()
             }
             else {
-                this.shadowRoot.innerHTML = '<div>qr-code: '+ this.format +' not supported!</div>'
-            }
+                this.shadowRoot.textContent = `qr-code: ${this.format} not supported!`
+           }
         }
         else {
-            this.shadowRoot.innerHTML = '<div>qr-code: no data!</div>'
+            this.shadowRoot.textContent = 'qr-code: no data!'
         }
     }
     generatePNG() {
         try {
             let img = document.createElement('img')
             img.src = _QRCode.generatePNG(this.data, this.getOptions())
-            this.clear()
             this.shadowRoot.appendChild(img)
         }
         catch (e) {
-            this.shadowRoot.innerHTML = '<div>qr-code: no canvas support!</div>'
+            this.shadowRoot.textContent = 'qr-code: canvas not supported!'
         }
     }
     generateHTML() {
         let div = _QRCode.generateHTML(this.data, this.getOptions())
-        this.clear()
         this.shadowRoot.appendChild(div)
     }
     generateSVG() {
         let div = _QRCode.generateSVG(this.data, this.getOptions())
-        this.clear()
         this.shadowRoot.appendChild(div)
     }
     clear() {
