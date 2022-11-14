@@ -87,17 +87,20 @@ export default class QRCode extends HTMLElement {
   generatePNG() {
     const img = document.createElement('img')
     img.src = _QRCode.generatePNG(this.data, this.getOptions())
+    img.setAttribute('part', 'img')
     this.shadowRoot.appendChild(img)
   }
 
   generateHTML() {
     const div = _QRCode.generateHTML(this.data, this.getOptions())
+    document.querySelector('table').setAttribute('part', 'table')
     this.shadowRoot.appendChild(div)
   }
 
   generateSVG() {
-    const div = _QRCode.generateSVG(this.data, this.getOptions())
-    this.shadowRoot.appendChild(div)
+    const svg = _QRCode.generateSVG(this.data, this.getOptions())
+    svg.setAttribute('part', 'svg')
+    this.shadowRoot.appendChild(svg)
   }
 
   clear() {

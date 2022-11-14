@@ -58,6 +58,22 @@ Attribute       | Options                   | Default             | Description
 `modulesize`    | *int*                     | `5`                 | Size of the modules in *pixels*.
 `margin`        | *int*                     | `4`                 | Margin of the QR code in *modules*.
 
+## CSS `part` styling
+
+To style the shadow DOM children elements created by the `qr-code` web component, it is possible to use their `part` attribute.
+
+```css
+/* for format="svg" */
+qr-code::part(svg) {
+  witdh: 100%;
+}
+/* for format="png" */
+qr-code::part(img) {}
+
+/* for format="html" */
+qr-code::part(table) {}
+```
+
 
 ## Contributing
 
