@@ -63,11 +63,11 @@ export default class QRCode extends HTMLElement {
                 this.generateSVG()
             }
             else {
-                this.shadowRoot.innerText = `qr-code: ${this.format} not supported!`
+                this.shadowRoot.textContent = `qr-code: ${this.format} not supported!`
            }
         }
         else {
-            this.shadowRoot.innerText = 'qr-code: no data!'
+            this.shadowRoot.textContent = 'qr-code: no data!'
         }
     }
     generatePNG() {
@@ -77,7 +77,7 @@ export default class QRCode extends HTMLElement {
             this.shadowRoot.appendChild(img)
         }
         catch (e) {
-            this.shadowRoot.innerText = 'qr-code: canvas not supported!'
+            this.shadowRoot.textContent = 'qr-code: canvas not supported!'
         }
     }
     generateHTML() {
