@@ -72,7 +72,7 @@ export default class QRCode extends HTMLElement {
         }
         else {
           this.shadowRoot.textContent = `qr-code: ${this.format} not supported!`
-       }
+        }
       }
       else {
         this.shadowRoot.textContent = 'qr-code: no data!'

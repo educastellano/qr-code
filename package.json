@@ -2,14 +2,14 @@
   "name": "webcomponent-qr-code",
   "version": "1.0.6",
   "description": "Web Component for generating QR codes",
-  "main": "dist/index.bundle.js",
+  "main": "dist/index.js",
   "scripts": {
     "start": "concurrently \"npm run start-watch\" \"npm run start-server\" ",
     "start-watch": "webpack --watch",
     "start-server": "http-server",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preversion": "npm run build && git add dist",
+    "preversion": "npm run build",
     "postversion": "git push && git push --tags"
   },
   "repository": {
