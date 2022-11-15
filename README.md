@@ -35,7 +35,7 @@ import 'webcomponent-qr-code'
 <qr-code data="hello world!"></qr-code>
 ```
 
-**Custom element name:**
+**Custom element name**
 
 ```js
 import QRCode from 'webcomponent-qr-code/qr-code'
@@ -47,6 +47,20 @@ customElements.define('myapp-qrcode', QRCode)
 <myapp-qrcode data="hello world!"></myapp-qrcode>
 ```
 
+**Custom styles**
+
+Use the `part` attribute to style shadow DOM elements:
+
+```css
+/* format="png" */
+qr-code::part(img) {}
+
+/* format="html" */
+qr-code::part(table) {}
+
+/* format="svg" */
+qr-code::part(svg) {}
+```
 
 
 ## Options
@@ -57,22 +71,6 @@ Attribute       | Options                   | Default             | Description
 `format`        | `png`, `html`, `svg`      | `png`               | Format of the QR code rendered inside the component.
 `modulesize`    | *int*                     | `5`                 | Size of the modules in *pixels*.
 `margin`        | *int*                     | `4`                 | Margin of the QR code in *modules*.
-
-## CSS `part` styling
-
-To style the shadow DOM children elements created by the `qr-code` web component, it is possible to use their `part` attribute.
-
-```css
-/* for format="svg" */
-qr-code::part(svg) {
-  witdh: 100%;
-}
-/* for format="png" */
-qr-code::part(img) {}
-
-/* for format="html" */
-qr-code::part(table) {}
-```
 
 
 ## Contributing
