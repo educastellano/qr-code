@@ -4,43 +4,91 @@
 	<meta charset="UTF-8">
 	<title>&lt;qr-code&gt;</title>
 	<style>
+
+		* {
+			box-sizing: border-box;
+		}
+
 		body {
-			background: #eeeeee;
+			margin: 0;
+			padding: 32px;
+			height: 100vh;
+			background: #eee;
+			font-family: Avenir;
 		}
-		.content {
-			padding: 50px;
-			margin-left: 200px;
+
+		hr {
+			margin: 32px 0;
 		}
-		#data {
+		
+		.row0 {
+			display: flex;
+			justify-content: center;
+		}
+
+		.qr input {
 			font-size: 1.2em;
-			width: 300px
+			width: 300px;
+			padding: 4px 8px;
 		}
-		.theshow {
-			float: left;
-		}
-		label {
+
+		.options label {
 			display: inline-block;
 			width: 150px;
 			text-align: right;
 		}
-		#scalable {
+
+		.options input,
+		.options select {
+			margin: 4px 4px;
+			padding: 2px 4px;
+			font-size: 15px;
+		}
+
+		.options #scalable {
 			display: none;
 		}
+
+		/* custom styles	*/
+
+		.row1 {
+			display: flex;
+			flex-direction: column;
+		}
+
+		.row1 .qr-list {
+			display: flex;
+			justify-content: space-around;
+			flex-wrap: wrap;
+		}
+
+		.row1 .qr-list qr-code:first-child::part(svg) {
+			border-radius: 30px;
+		}
+
+		.row1 .qr-list qr-code:nth-child(2)::part(svg) {
+			transform: scale(1.2) rotate(-10deg);
+		}
+
+		.row1 .qr-list qr-code:last-child::part(svg) {
+			border: 4px solid tomato;
+		}
+
+
 	</style>
 </head>
 <body>
-	<div class="content">
-		<div class="theshow">
+	<div class="row0">
+		<div class="qr">
 			<input
-				id="data"
 				type="text"
-				value="bla bla blaaaaaaaaaahhh"
+				value="Data encoded in the QR code..."
 				oninput="document.querySelector('qr-code').data = this.value"
 				autofocus
 			/>
 			<br><br>
 			<!-- Using the Web Component -->
-			<qr-code data="bla bla blaaaaaaaaaahhh"></qr-code>
+			<qr-code data="Data encoded in the QR code..." format="png"></qr-code>
 		</div>
 		<div class="options">
 			<label for="format">Format</label>
@@ -75,6 +123,15 @@
 				max=30
 				onkeypress="return event.charCode >= 48 && event.charCode <= 57"
 			/>
+		</div>
+	</div>
+	<hr />
+	<div class="row1">
+		<h2>Custom styles</h2>
+		<div class="qr-list">
+			<qr-code data="Tomato QR code" format="svg"></qr-code>
+			<qr-code data="Red QR code" format="svg"></qr-code>
+			<qr-code data="Red QR code" format="svg"></qr-code>
 		</div>
 	</div>
 	<!-- Polyfill and Web Component -->

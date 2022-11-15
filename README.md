@@ -35,7 +35,7 @@ import 'webcomponent-qr-code'
 <qr-code data="hello world!"></qr-code>
 ```
 
-**Custom element name:**
+**Custom element name**
 
 ```js
 import QRCode from 'webcomponent-qr-code/qr-code'
@@ -47,6 +47,20 @@ customElements.define('myapp-qrcode', QRCode)
 <myapp-qrcode data="hello world!"></myapp-qrcode>
 ```
 
+**Custom styles**
+
+Use the `part` pseudo-element to style shadow DOM elements:
+
+```css
+/* format="png" */
+qr-code::part(img) {}
+
+/* format="html" */
+qr-code::part(table) {}
+
+/* format="svg" */
+qr-code::part(svg) {}
+```
 
 
 ## Options
@@ -68,6 +82,8 @@ Attribute       | Options                   | Default             | Description
 5. Submit a pull request :D
 
 ## Changelog
+* v1.1.0 November 15, 2022
+    * Support for custom styles with the `::part` CSS pseudo-element
 * v1.0.0 July 13, 2018
     * Use new API customElements.define
     * Support for a custom element name
