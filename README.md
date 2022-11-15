@@ -49,7 +49,7 @@ customElements.define('myapp-qrcode', QRCode)
 
 **Custom styles**
 
-Use the `part` attribute to style shadow DOM elements:
+Use the `part` pseudo-element to style shadow DOM elements:
 
 ```css
 /* format="png" */
@@ -82,6 +82,8 @@ Attribute       | Options                   | Default             | Description
 5. Submit a pull request :D
 
 ## Changelog
+* v1.1.0 November 15, 2022
+    * Support for custom styles with the `::part` CSS pseudo-element
 * v1.0.0 July 13, 2018
     * Use new API customElements.define
     * Support for a custom element name
