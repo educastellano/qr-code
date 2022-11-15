@@ -93,8 +93,9 @@ export default class QRCode extends HTMLElement {
 
   generateHTML() {
     const div = _QRCode.generateHTML(this.data, this.getOptions())
-    document.querySelector('table').setAttribute('part', 'table')
-    this.shadowRoot.appendChild(div)
+    const table = div.firstChild
+    table.setAttribute('part', 'table')
+    this.shadowRoot.appendChild(table)
   }
 
   generateSVG() {
