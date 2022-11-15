@@ -9,7 +9,7 @@
     "start-server": "http-server",
     "build": "webpack",
     "test": "echo \"Error: no test specified\" && exit 1",
-    "preversion": "npm run build",
+    "preversion": "npm run build && git add dist",
     "postversion": "git push && git push --tags"
   },
   "repository": {
