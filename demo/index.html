@@ -62,18 +62,26 @@
 			flex-wrap: wrap;
 		}
 
+		/* Rounded QR code  */
 		.row1 .qr-list qr-code:first-child::part(svg) {
 			border-radius: 30px;
 		}
 
+		/* Rotated QR code  */
 		.row1 .qr-list qr-code:nth-child(2)::part(svg) {
 			transform: scale(1.2) rotate(-10deg);
 		}
 
-		.row1 .qr-list qr-code:last-child::part(svg) {
-			border: 4px solid tomato;
+		/* Green QR code  */
+		.row1 .qr-list qr-code:last-child::part(table) {
+			border-color: #141925;
 		}
-
+		.row1 .qr-list qr-code:last-child::part(module-bg) {
+			background: #141925;
+		}
+		.row1 .qr-list qr-code:last-child::part(module-fg) {
+			background: #95e6cb;
+		}
 
 	</style>
 </head>
@@ -129,9 +137,9 @@
 	<div class="row1">
 		<h2>Custom styles</h2>
 		<div class="qr-list">
-			<qr-code data="Tomato QR code" format="svg"></qr-code>
-			<qr-code data="Red QR code" format="svg"></qr-code>
-			<qr-code data="Red QR code" format="svg"></qr-code>
+			<qr-code data="Rounded QR code" format="svg"></qr-code>
+			<qr-code data="Rotated QR code" format="svg"></qr-code>
+			<qr-code data="Green QR code" format="html"></qr-code>
 		</div>
 	</div>
 	<!-- Polyfill and Web Component -->
