@@ -71,6 +71,8 @@ Attribute       | Options                   | Default             | Description
 `format`        | `png`, `html`, `svg`      | `png`               | Format of the QR code rendered inside the component.
 `modulesize`    | *int*                     | `5`                 | Size of the modules in *pixels*.
 `margin`        | *int*                     | `4`                 | Margin of the QR code in *modules*.
+`unit`          | *string*                  | `px`                | CSS units of the `modulesize` (**Supported for HTML generation only**)
+`ratio`         | *int*                     | `1`                 | Multiplier for the `modulesize`. Example: if `units` is `rem` and the `ratio` is `0.0625`, a modulesize of `5px` will be translated to `0.3125rem`. (**Supported for HTML generation only**)
 
 
 ## Contributing
@@ -82,6 +84,8 @@ Attribute       | Options                   | Default             | Description
 5. Submit a pull request :D
 
 ## Changelog
+* v1.2.0 July 12, 2023
+    * Support for any CSS unit in HTML generated codes.
 * v1.1.0 November 15, 2022
     * Support for custom styles with the `::part` CSS pseudo-element
 * v1.0.0 July 13, 2018

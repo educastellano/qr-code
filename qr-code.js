@@ -17,7 +17,9 @@ export default class QRCode extends HTMLElement {
       data: null,
       format: 'png',
       modulesize: 5,
-      margin: 4
+      margin: 4,
+      unit: 'px',
+      ratio: 1
     }
   }
 
@@ -50,10 +52,12 @@ export default class QRCode extends HTMLElement {
   }
 
   getOptions() {
-    const { modulesize, margin } = this
+    const { modulesize, margin, unit, ratio } = this
     return {
+      margin: margin !== null ? parseInt(margin) : margin,
       modulesize: modulesize !== null ? parseInt(modulesize) : modulesize,
-      margin: margin !== null ? parseInt(margin) : margin
+      unit: unit || 'px',
+      ratio: ratio || 1
     }
   }
 
