@@ -1,6 +1,8 @@
 import _QRCode from 'qrjs'
 
-export default class QRCode extends HTMLElement {
+const HTMLElementBase = typeof HTMLElement === 'undefined' ? class {} : HTMLElement
+
+export default class QRCode extends HTMLElementBase {
 
   constructor() {
     super()

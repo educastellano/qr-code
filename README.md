@@ -20,22 +20,11 @@ npm install webcomponent-qr-code
 import 'webcomponent-qr-code'
 ```
 
-<!--
-```
-<custom-element-demo>
-  <template>
-    <script src="demo/webcomponents-lite.js"></script>
-    <script src="index.js"></script>
-    <next-code-block></next-code-block>
-  </template>
-</custom-element-demo>
-```
--->
 ```html
 <qr-code data="hello world!"></qr-code>
 ```
 
-**Custom element name**
+**Custom name**
 
 ```js
 import QRCode from 'webcomponent-qr-code/qr-code'
@@ -75,7 +64,6 @@ Attribute       | Type                      | Default             | Description
 `ratio`         | *int*                     | `1`                 | Multiplier for the `modulesize`. Example: if `units` is `rem` and the `ratio` is `0.0625`, a modulesize of `5px` will be translated to `0.3125rem`. (**Supported for HTML generation only**)
 `ecclevel`      | *string*: `L`, `M`, `Q`, `H`, | `L`             | Error correction level
 
-
 ## Contributing
 
 1. Fork it!
@@ -86,6 +74,12 @@ Attribute       | Type                      | Default             | Description
 
 ## Changelog
 
+* v2.0.0 June 26, 2026
+    * Guard custom element registration for non-browser environments
+    * Remove legacy ES5 support
+    * Remove build step and dev dependencies
+        * Remove dist bundle
+        * Publish ESM only
 * v1.3.0 January 9, 2025
     * Support to configure error correction level (ECC).
 * v1.2.0 July 12, 2023

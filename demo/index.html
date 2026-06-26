@@ -153,8 +153,13 @@
 			<qr-code data="Green QR code" format="html"></qr-code>
 		</div>
 	</div>
-	<!-- Polyfill and Web Component -->
-	<script src="webcomponents-lite.js"></script>
-	<script src="../dist/index.js"></script>
+	<script type="importmap">
+		{
+			"imports": {
+				"qrjs": "https://esm.sh/qrjs@0.2.0"
+			}
+		}
+	</script>
+	<script type="module" src="../index.js"></script>
 </body>
 </html>
