@@ -75,6 +75,7 @@ Attribute       | Type                      | Default             | Description
 ## Changelog
 
 * v2.0.0 June 26, 2026
+    * Guard custom element registration for non-browser environments
     * Remove legacy ES5 support
     * Remove build step and dev dependencies
         * Remove dist bundle
